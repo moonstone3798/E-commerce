@@ -27,10 +27,7 @@
                 </span>
              </th>
              <th scope="col" class="px-3 py-3">Imágenes</th>
-             <th colspan="2" > <button wire:click="agregarProducto()" class="bg-white  text-xl rounded-full my-3"> <i class="fa-solid fa-circle-plus fa-xl text-[#22c55e] hover:text-[#16a340]"></i></button>
- @if($modal)
- @include('livewire.agregarProducto')
- @endif
+             <th colspan="2" >    @include('livewire.agregar-producto')   
  </th>
          </tr>
      </thead>
@@ -52,7 +49,10 @@ $imagenesArray = explode('|', $producto->imagenes);
      </tbody>
  </table>
  </div>
+ <div>
+    
  {{ $productos->links() }}
+ 
         </div>
     </div>
     

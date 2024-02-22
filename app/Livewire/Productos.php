@@ -12,12 +12,13 @@ class Productos extends Component
 {
     use WithFileUploads;
     public  $nombre , $id , $precio , $idCategoria ;
-    public $modal = false;
+    public $open = false;
     public $buscar;
     public $imagenes = [];
     public $sortColumnName = 'id';
     public $sortDirection= 'desc';
     use WithPagination;
+    
 
     public function sortBy($columnName)
     {
@@ -43,7 +44,7 @@ class Productos extends Component
         ->orwhere( 'precio' ,'LIKE' , $buscar)
         ->orwhere( 'idCategoria' ,'LIKE' , $buscar)
         ->orderBy($this->sortColumnName, $this->sortDirection)
-        ->paginate(6);
+        ->paginate(1);
         $categorias = Categoria::all();
         return view('livewire.productos'
         , [

@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 
 class HistorialesdeCompras extends Component
 {
+    public $open = false;
     public  $factura , $id , $precioT , $fecha ;
     public $buscar;
     public $sortColumnName = 'id';

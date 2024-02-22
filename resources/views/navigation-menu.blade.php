@@ -30,9 +30,6 @@
                                 {{ __('Manage Account') }}
                             </div>
                       
-                            <x-dropdown-link href="{{ route('profile.show') }}" class="no-underline">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
 
 
                             <!-- Authentication -->
@@ -66,14 +63,18 @@
     <div x-show="open" class="bg-[#5B253BE6] absolute h-full right-0 z-10 sm:w-1/5 w-1/2 origin-top-right shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none " role="menu" aria-orientation="vertical"  tabindex="-1">
       
     <div :class="{'block': open, 'hidden': ! open}" class="hidden">
-            <x-responsive-nav-link href="{{('productos') }}" :active="request()->routeIs('productos')">
-                {{ __('Productos') }}
+       
+    <x-responsive-nav-link href="{{('productos') }}" :active="request()->routeIs('productos')"><i class="fa-solid fa-shirt "></i> 
+       {{ __('Productos') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link  href="{{('stocks') }}" :active="request()->routeIs('stocks')">
                 {{ __('Stocks') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{('categorias') }}" :active="request()->routeIs('categorias')">
                 {{ __('Categorias') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('')">
+                                {{ __('Profile') }}
             </x-responsive-nav-link>
         </div>
         </div>
