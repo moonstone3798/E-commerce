@@ -13,7 +13,7 @@
 <br>
 <div class="flex justify-start">
 <div class=" flex justify-evenly text-white w-5/6">
- 
+@if($productos->count())
 @foreach( $productos as $producto )
 @php
                 $imagenesArray = explode('|', $producto->imagenes);
@@ -29,4 +29,12 @@
 </div>
 
 {{ $productos->links() }}
+@else()
+ <div>
+    <div class="flex justify-center">
+ <img class=" w-1/3" src="/Storage/noencontrado.png" alt="" ></div>
+ <div class="flex justify-center">
+    <p>Disculpe pero no poseemos ningún producto con ese nombre o características</p></div>
+ </div>
+ @endif
 </div> 

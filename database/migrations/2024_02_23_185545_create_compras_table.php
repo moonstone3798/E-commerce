@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idUsuario')->constrained('users');
-            $table->integer('cantidad');
-            $table->foreignId('idProducto')->constrained('productos');
-            $table->decimal('precioT');
-            $table->date('fecha');
+            $table->foreignId('idCarrito')->constrained('carritos');
+            $table->date('fechaModificación');
             $table->string('factura',100);
+            $table->integer('estado');
         });
     }
 

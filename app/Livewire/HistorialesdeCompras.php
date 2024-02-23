@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class HistorialesdeCompras extends Component
 {
     public $open = false;
-    public  $factura , $id , $precioT , $fecha ;
+    public  $factura , $id , $estado, $fecha ;
     public $buscar;
     public $sortColumnName = 'id';
     public $sortDirection= 'desc';
@@ -34,15 +34,12 @@ class HistorialesdeCompras extends Component
     {
         $buscar='%'. $this->buscar . '%';
         $compras = Compra::where( 'id' ,'LIKE' , $buscar)
-        ->orwhere( 'precioT' ,'LIKE' , $buscar)
-        ->orwhere( 'fecha' ,'LIKE' , $buscar)
+        ->orwhere( 'estado' ,'LIKE' , $buscar)
         ->orderBy($this->sortColumnName, $this->sortDirection)
         ->paginate(6);
         return view('livewire.historiales-de-compras'
         , [
             'compras' => $compras 
-        ])
-        ->layout('layouts.plantilla')
-        ;
+        ]);
     }
 }

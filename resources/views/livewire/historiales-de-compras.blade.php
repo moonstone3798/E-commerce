@@ -13,6 +13,7 @@
             {{ __('Historial de compras') }}
         </x-slot>
         <x-slot name="content">
+            @if($compras->count())
         <x-buscador></x-buscador>
 <br>
 <table class="w-full text-m text-center rtl:text-right text-gray-500">
@@ -31,9 +32,9 @@
                 </span>
              </th>
              <th scope="col" class="px-7 py-3">Precio
-             <span wire:click="sortBy('precioT')" class="float-right">
-                    <i class="	fa fa-arrow-up fa-2xs {{$sortColumnName === 'precioT' && $sortDirection ==='asc' ? ''  : 'text-muted' }}"></i>
-                    <i class="	fa fa-arrow-down fa-2xs {{$sortColumnName === 'precioT' && $sortDirection ==='desc' ? ''  : 'text-muted' }}"></i>
+             <span wire:click="sortBy('estado')" class="float-right">
+                    <i class="	fa fa-arrow-up fa-2xs {{$sortColumnName === 'estado' && $sortDirection ==='asc' ? ''  : 'text-muted' }}"></i>
+                    <i class="	fa fa-arrow-down fa-2xs {{$sortColumnName === 'estado' && $sortDirection ==='desc' ? ''  : 'text-muted' }}"></i>
                 </span>
              </th>
              <th scope="col" class="px-7 py-3">Factura
@@ -48,13 +49,21 @@
 <tr  class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b">
    <th scope="row" class="px-7 py-4 font-medium text-gray-900 whitespace-nowrap">{{ $compra->id }}</th>
    <td class="px-7 py-4">{{ $compra->fecha}}</td>
-   <td class="px-7 py-4">{{ $compra->precioT }}</td>
+   <td class="px-7 py-4">{{ $compra->estado }}</td>
    <td class="px-7 py-4">{{ $compra->factura }}</td>
  </tr>
 @endforeach
      </tbody>
  </table>
  {{ $compras->links() }}
+ @else()
+ <div>
+    <div class="flex justify-center">
+ <img class=" w-1/3" src="/Storage/noencontrado.png" alt="" ></div>
+ <div class="flex justify-center">
+    <p>Usted aun no ha realizado ninguna compra</p></div>
+ </div>
+ @endif
         </x-slot>
         <x-slot name="footer">
          <x-danger-button wire:click="$set('open', false)">Cerrar</x-danger-button>
